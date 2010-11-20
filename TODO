@@ -1,6 +1,6 @@
 ===== Stories =====
 [Must Have]
-Initialize app: load Inception template into DB
+Initialize app: load Inception template into DB							DONE
 List Inceptions
 Start a new Inception
 View Inception: list Concerns
@@ -14,7 +14,7 @@ Summarize status to Concerns and Inception
 
 [Could Have]
 Easy way to modify existing template
-Create other templates (consulting, training, etc.)
+Create other templates such as consulting, training, etc.
 Sync with a knowledge base
 
 ===== Tasks =====
