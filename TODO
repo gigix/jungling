@@ -1,0 +1,25 @@
+===== Stories =====
+[Must Have]
+Initialize app: load Inception template into DB
+List Inceptions
+Start a new Inception
+View Inception: list Concerns
+View Concern: list Checkpoints
+View Checkpoint
+Update Checkpoint: add comment
+
+[Should Have]
+Mark Checkpoint as "Not Done Yet", "Done" or "Don't Need"
+Summarize status to Concerns and Inception
+
+[Could Have]
+Easy way to modify existing template
+Create other templates (consulting, training, etc.)
+Sync with a knowledge base
+
+===== Tasks =====
+UI tidy up
+Test with iPad
+Create a usable Inception template
+Test with iPhone
+Unit test

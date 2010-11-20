@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+    <title>DB Access</title>
+</head>
+
+<body>
+	<input type='button' onclick='test()' value='Test DB'/>
+	<input type='button' onclick='reset()' value='Reset DB'/>
+	
+	<script>
+		db = openDatabase("Sample", "0.1", "A test db.", 200000);
+		
+		function test() {
+			db.transaction(
+		        function(tx) {
+		            tx.executeSql("SELECT COUNT(*) AS count FROM Samples", [], null,
+		            	function(tx, error) {
+		             		tx.executeSql("CREATE TABLE Samples (id REAL UNIQUE, label TEXT, timestamp REAL)", [], null, null);
+							alert("Table Samples created")
+	                	}
+		            );
+		        }
+		    );
+		
+			db.transaction(
+		        function(tx) {
+	            	tx.executeSql("INSERT INTO Samples (label, timestamp) values(?, ?)", ["test label", new Date().getTime()], null, null);
+		        }
+		    );
+	
+			db.transaction(
+				function(tx) {
+					tx.executeSql("SELECT * FROM Samples", [], 
+						function(tx, result) {
+							alert(result.rows.length)
+		                    for(var i = 0; i < result.rows.length; i++) {
+								var content = result.rows.item(i)['id']
+		                        document.write('<b>' + content + '</b><br />');
+		                    }
+		                }, 
+					null)
+				}
+			)
+		}
+		
+		function reset() {
+			db.transaction(
+		        function(tx) {
+	            	tx.executeSql("DROP TABLE Samples", [], null, null);
+		        }
+		    );
+		}
+	</script>
+	
+</body>
+
+</html>
