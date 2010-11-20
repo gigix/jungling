@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
   	<script language="javascript" src="javascripts/db_utils.js"></script>
   	<script language="javascript" src="javascripts/inception.js"></script>
+  	<script language="javascript" src="javascripts/concern.js"></script>
     <title>Jungling  | Initialize Application</title>
 </head>
 
@@ -15,6 +16,9 @@
 
 		listInceptions(function(inception){
 			document.write('<b>' + inception.title + '</b><br/>')
+			for(var i = 0; i < inception.concerns.length; i++) {
+				document.write('&nbsp; - ' + inception.concerns[i].title + '<br/>')
+			}
 		})
 	</script>
 	
