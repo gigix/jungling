@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+  	<script language="javascript" src="javascripts/db_utils.js"></script>
+  	<script language="javascript" src="javascripts/inception.js"></script>
+    <title>Jungling  | Initialize Application</title>
+</head>
+
+<body>	
+	<script>
+		initializeDatabase()
+		createInception("Hub Online")
+		createInception("LPI")
+
+		listInceptions(function(inception){
+			document.write('<b>' + inception.title + '</b><br/>')
+		})
+	</script>
+	
+</body>
+
+</html>
