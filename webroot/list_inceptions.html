@@ -50,6 +50,9 @@
 		</div>
 		<div class="detail-container">
 			<div id='description' class='list-item'></div>
+			<div class='list-item'>
+				<textarea id='comment'></textarea>
+			</div>
 		</div>
 	</div>
 	
@@ -102,6 +105,22 @@
 		
 		pane.find('#description').text(checkpoint.description)
 		
+		var commentTextArea = pane.find('#comment')
+		commentTextArea.val(checkpoint.comment)
+		
+		var saveButton = $("<input type='button' value='Save Comment' />")
+		saveButton.click(function() {
+			checkpoint.comment = commentTextArea.val()
+			transactional(function(tx) { 
+				checkpoint.update(tx) 
+			})
+			
+			transactional(function() {
+				alert("Comment has been saved")				
+			})
+		})
+		commentTextArea.after(saveButton)
+
 		showPane(pane)
 	}
 	

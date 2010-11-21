@@ -46,3 +46,8 @@ body {
 .list-item .operations {
 	float: right;
 }
+
+textarea {
+	height: 300px;
+	width: 400px;
+}
