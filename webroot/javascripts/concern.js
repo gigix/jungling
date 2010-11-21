@@ -21,21 +21,21 @@ Concern.prototype.create = function(tx, inception_id) {
 	)
 }
 
-Concern.prototype.loadCheckpoints = function(tx, checkpointHandler) {
+Concern.prototype.loadCheckpoints = function(tx) {
 	var concern = this
 	tx.executeSql("SELECT * FROM checkpoints WHERE concern_id = ? ORDER BY id ASC", [concern.id], 
 		function(tx, result) {
 			for(var i = 0; i < result.rows.length; i++) {
 				var record = result.rows.item(i)
 			
-				var checkpoint = new Concern()
+				var checkpoint = new Checkpoint()
 				checkpoint.id = record['id']
 				checkpoint.concern_id = record['concern_id']
 				checkpoint.title = record['title']
 				checkpoint.description = record['description']
 				checkpoint.comment = record['comment']
 			
-				checkpointHandler(checkpoint)
+				concern.checkpoints.push(checkpoint)
 			}
 		},
 		null

@@ -4,7 +4,7 @@ function Inception(title) {
 	this.concerns = new Array()
 }
 
-Inception.prototype.loadConcerns = function(tx, concernHandler, checkpointHandler) {
+Inception.prototype.loadConcerns = function(tx) {
 	var inception = this
 	tx.executeSql("SELECT * FROM concerns WHERE inception_id = ? ORDER BY id ASC", [inception.id],
 		function(tx, result) {
@@ -16,11 +16,9 @@ Inception.prototype.loadConcerns = function(tx, concernHandler, checkpointHandle
 				concern.inception_id = record['inception_id']
 				concern.title = record['title']
 
-				concern.loadCheckpoints(tx, checkpointHandler)
+				concern.loadCheckpoints(tx)
 				
-				// Really need this?
-				// inception.concerns.push(concern)
-				concernHandler(concern)
+				inception.concerns.push(concern)
 			}
 		},
 		null
@@ -58,10 +56,9 @@ function createInception(title) {
 	db.transaction(function(tx) {inception.create(tx) })
 }
 
-function listInceptionsWithinTransaction(tx, inceptionHandler, concernHandler, checkpointHandler) {
+function listInceptionsWithinTransaction(tx, inceptions) {
 	tx.executeSql("SELECT * FROM inceptions ORDER BY id ASC", [], 
 		function(tx, result) {
-			var inceptions = new Array()
 			for(var i = 0; i < result.rows.length; i++) {
 				var record = result.rows.item(i)
 				
@@ -69,18 +66,20 @@ function listInceptionsWithinTransaction(tx, inceptionHandler, concernHandler, c
 				inception.id = record['id']
 				inception.title = record['title']
 				
-				inception.loadConcerns(tx, concernHandler, checkpointHandler)
-				inceptionHandler(inception)
+				inception.loadConcerns(tx)
+				inceptions.push(inception)
 			}
 		},
 		null
 	)
 }
 
-function listInceptions(inceptionHandler, concernHandler, checkpointHandler) {
-	db.transaction(
+function listInceptions() {
+	var inceptions = new Array()
+	transactional(
 		function(tx) {
-			listInceptionsWithinTransaction(tx, inceptionHandler, concernHandler, checkpointHandler)
+			listInceptionsWithinTransaction(tx, inceptions)
 		}
 	)
+	return inceptions
 }

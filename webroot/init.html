@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+  	<script language="javascript" src="javascripts/application.js"></script>
   	<script language="javascript" src="javascripts/db_utils.js"></script>
   	<script language="javascript" src="javascripts/inception.js"></script>
   	<script language="javascript" src="javascripts/concern.js"></script>
@@ -15,19 +16,11 @@
 		createInception("Hub Online")
 		createInception("LPI")
 
-		listInceptions(
-			function(inception){
-				document.write('<div><b>' + inception.title + '</b><br/><div id="concerns_' + inception.id + '" /></div>')
-			},
-			function(concern) {
-				var targetElement = document.getElementById("concerns_" + concern.inception_id)
-				targetElement.innerHTML += ('&nbsp; * ' + concern.title + '<br/><div id="checkpoints_' + concern.id + '" />')
-			},
-			function(checkpoint) {
-				var targetElement = document.getElementById("checkpoints_" + checkpoint.concern_id)
-				targetElement.innerHTML += ('&nbsp;&nbsp; -- ' + checkpoint.title + ' : ' + checkpoint.description + '<br/>')
-			}
-		)
+		var inceptions = listInceptions()
+		
+		transactional(function() {
+			alert('' + inceptions.length + ' inceptions has been created')
+		})
 	</script>
 </body>
 

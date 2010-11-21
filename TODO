@@ -1,8 +1,8 @@
 ===== Stories =====
 [Must Have]
 Initialize app: load Inception template into DB							DONE
-List Inceptions
-Start a new Inception
+List Inceptions															DONE
+Start a new Inception													DONE
 View Inception: list Concerns
 View Concern: list Checkpoints
 View Checkpoint
