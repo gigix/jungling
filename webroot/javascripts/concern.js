@@ -1,6 +1,7 @@
 function Concern(title) {
 	this.id = -1
 	this.inception_id = -1
+	this.inception = null
 	this.title = title
 	this.checkpoints = new Array()
 }
@@ -36,6 +37,7 @@ Concern.prototype.loadCheckpoints = function(tx) {
 				checkpoint.comment = record['comment']
 			
 				concern.checkpoints.push(checkpoint)
+				checkpoint.concern = concern
 			}
 		},
 		null

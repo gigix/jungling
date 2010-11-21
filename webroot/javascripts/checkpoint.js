@@ -1,6 +1,7 @@
 function Checkpoint(title, description) {
 	this.id = -1
 	this.concern_id = -1
+	this.concern = null
 	this.title = title
 	this.description = description
 	this.comment = ''

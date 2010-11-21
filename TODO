@@ -3,14 +3,15 @@
 Initialize app: load Inception template into DB							DONE
 List Inceptions															DONE
 Start a new Inception													DONE
-View Inception: list Concerns
-View Concern: list Checkpoints
+View Inception: list Concerns											DONE
+View Concern: list Checkpoints											DONE
 View Checkpoint
 Update Checkpoint: add comment
 
 [Should Have]
 Mark Checkpoint as "Not Done Yet", "Done" or "Don't Need"
 Summarize status to Concerns and Inception
+Add comment to Inception
 
 [Could Have]
 Easy way to modify existing template

@@ -19,6 +19,7 @@ Inception.prototype.loadConcerns = function(tx) {
 				concern.loadCheckpoints(tx)
 				
 				inception.concerns.push(concern)
+				concern.inception = inception
 			}
 		},
 		null
@@ -39,6 +40,12 @@ Inception.prototype.create = function(tx) {
 		}, 
 		null
 	)
+}
+
+function viewInception(inceptionId) {
+	transactional(function() {
+		var loadInceptionWithinTransaction;
+	})
 }
 
 function createInception(title) {
