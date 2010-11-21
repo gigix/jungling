@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	<link rel="stylesheet" href="stylesheets/jungling.css" type="text/css"/>
+	
+    <script type="text/javascript" src="javascripts/jquery-1.4.4.js"></script>
+  	<script language="javascript" src="javascripts/application.js"></script>
+  	<script language="javascript" src="javascripts/inception.js"></script>
+  	<script language="javascript" src="javascripts/concern.js"></script>
+  	<script language="javascript" src="javascripts/checkpoint.js"></script>
+    <title>Jungling</title>
+
+</head>
+
+<body>
+	<div id='inceptionPane' class='pane'>
+		<div class='toolbar'>
+			Inceptions
+			<div style='float:right; padding-right: 1em;'>
+				<input id='inceptionName' />
+				<input type='button' value='New Inception' onclick="createInception($('#inceptionName').val()); showInceptionsList();" />
+			</div>
+		</div>
+		<div id="inceptions" />
+	</div>
+	
+	<script>
+	function showInceptionsList() {
+		$('#inceptions').empty()
+		var inceptions = listInceptions()	
+		transactional(function(){
+			$.each(inceptions, function(index, inception){
+				$('#inceptions').append("<div class='list-item'>" + inception.title + "</div>")
+			})
+		})
+	}
+	showInceptionsList()
+	</script>
+</body>
+
+</html>
