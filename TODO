@@ -19,7 +19,7 @@ Create other templates such as consulting, training, etc.
 Sync with a knowledge base
 
 ===== Tasks =====
-index.html: initialize DB if necessary
+index.html: initialize DB if necessary									DONE
 UI tidy up
 Test with iPad
 Create a usable Inception template
