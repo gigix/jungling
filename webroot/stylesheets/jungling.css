@@ -11,7 +11,7 @@ body {
 	font-size: 1.2em;
 	font-weight: bold;
 	text-align: center;
-	height: 36px;
+	height: 45px;
 	padding-top: 15px;
 }
 
@@ -23,6 +23,7 @@ body {
 .toolbar .buttons {
 	float:right; 
 	padding-right: 1em;
+	cursor: pointer;
 }
 
 .list-item {
@@ -35,6 +36,7 @@ body {
 	padding-left:0.8em;
 	padding-right:0.8em;
 	padding-top:1em;
+	padding-bottom: 0.5em;
 }
 
 .list-item.selected {
@@ -45,6 +47,16 @@ body {
 
 .list-item .operations {
 	float: right;
+}
+
+.list-item .operations, #operations {
+	cursor: pointer;
+	padding-right: 0.5em;
+}
+
+#operations img {
+	margin-top: 0.5em;
+	margin-right: 1em;
 }
 
 textarea {

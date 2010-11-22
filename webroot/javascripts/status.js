@@ -19,3 +19,20 @@ function summarizeStatus(children) {
 	}
 	return result
 }
+
+function statusIcon(item) {
+	var status = item.getStatus()
+	if(status == Status.DONE) {
+		return 'emotion_smile.png'
+	}
+	if(status == Status.NOT_DONE) {
+		return 'fire.png'
+	}
+	if(status == Status.NOT_NEEDED) {
+		return 'hand_contra.png'
+	}
+}
+
+function statusTag(item) {
+	return "<img src='images/" + statusIcon(item) + "' />"
+}

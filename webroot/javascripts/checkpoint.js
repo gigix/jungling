@@ -26,8 +26,8 @@ Checkpoint.prototype.getStatus = function() {
 	return this.status
 }
 
-Checkpoint.prototype.saveButton = function(label, commentTextArea, status) {
-	var button = $("<input type='button' value=\"" + label + "\" />")
+Checkpoint.prototype.saveButton = function(image, commentTextArea, status) {
+	var button = $("<img src='" + image + "' />")
 	var checkpoint = this
 	button.click(function() {
 		checkpoint.comment = commentTextArea.val()

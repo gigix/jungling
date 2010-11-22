@@ -19,8 +19,9 @@
 		<div class='toolbar'>
 			<div class='title'>Inceptions</div>
 			<div class='buttons'>
-				<input id='inceptionName' />
-				<input class='back-button' type='button' value='New Inception' onclick="startNewInception()" />
+				<input id='inceptionName' style='font-size: 15px' />
+				<img alt='New Inception' onclick="startNewInception()"
+					src="images/round_plus.png" />
 			</div>
 		</div>
 		<div class="list-container"></div>
@@ -30,7 +31,10 @@
 		<div class='toolbar'>
 			<div class='title'></div>
 			<div class='buttons'>
-				<input class='back-button' type='button' value='Back' onclick="showInceptionsList()" />
+				<div class='back-button'>
+					<img alt='Back' onclick="showInceptionsList()"
+						src="images/round_arrow_left.png" />
+				</div>
 			</div>
 		</div>
 		<div class="list-container"></div>
@@ -83,7 +87,7 @@
 		var pane = $('#checkpointsPane')
 		pane.find('.title').text('Checkpoints Of [ ' + concern.inception.title + ' > ' + concern.title + ' ] ' + concern.getStatus())
 		
-		var backButton = $("<input class='back-button' type='button' value='Back' />")
+		var backButton = $("<img alt='Back' src='images/round_arrow_left.png' />")
 		backButton.click(function() {
 			showConcernsList(concern.inception)
 		})
@@ -98,7 +102,7 @@
 		var pane = $('#checkpointDetailPane')
 		pane.find('.title').text('Checkpoint of [ ' + concern.inception.title + ' > ' + concern.title + ' > ' + checkpoint.title + ' ] ' + checkpoint.getStatus())
 		
-		var backButton = $("<input class='back-button' type='button' value='Back' />")
+		var backButton = $("<img alt='Back' src='images/round_arrow_left.png' />")
 		backButton.click(function() {
 			showCheckpointsList(concern)
 		})
@@ -110,10 +114,10 @@
 		var commentTextArea = pane.find('#comment')
 		commentTextArea.val(checkpoint.comment)
 
-		var saveButton = checkpoint.saveButton('Save Comment', commentTextArea)
-		var notDoneButton = checkpoint.saveButton('Not Done Yet...', commentTextArea, Status.NOT_DONE)
-		var doneButton = checkpoint.saveButton('Done!', commentTextArea, Status.DONE)
-		var notNeededButton = checkpoint.saveButton("We Don't Need This", commentTextArea, Status.NOT_NEEDED)
+		var saveButton = checkpoint.saveButton('images/save.png', commentTextArea)
+		var notDoneButton = checkpoint.saveButton('images/redo.png', commentTextArea, Status.NOT_DONE)
+		var doneButton = checkpoint.saveButton('images/checkmark.png', commentTextArea, Status.DONE)
+		var notNeededButton = checkpoint.saveButton("images/delete.png", commentTextArea, Status.NOT_NEEDED)
 		
 		var operationsDiv = pane.find('#operations')
 		operationsDiv.empty()
@@ -131,7 +135,7 @@
 
 		transactional(function(){
 			$.each(items, function(index, item){
-				var itemDiv = $("<div class='list-item'>" + item.title + "</div>")
+				var itemDiv = $("<div class='list-item'>" + item.title + '&nbsp;' + statusTag(item) + "</div>")
 				itemDiv.click(
 					function() {
 						$(".list-item").each(function(index, item) {
@@ -142,7 +146,7 @@
 					}
 				)
 				
-				var viewItemButton = $("<div class='operations'><input type='button' value='See Detail' /></div>")
+				var viewItemButton = $("<div class='operations'><img src='images/arrow_right.png' alt='See Detail' /></div>")
 				viewItemButton.click(
 					function() {
 						return detailHandler(item)
