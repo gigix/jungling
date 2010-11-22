@@ -11,7 +11,7 @@ function initializeDatabase() {
 		function(tx) {
 			tx.executeSql("CREATE TABLE inceptions (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, title TEXT)", [], null, null)
 			tx.executeSql("CREATE TABLE concerns (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, inception_id INTEGER NOT NULL, title TEXT)", [], null, null)
-			tx.executeSql("CREATE TABLE checkpoints (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, concern_id INTEGER NOT NULL, title TEXT, description TEXT, comment TEXT)", [], null, null)
+			tx.executeSql("CREATE TABLE checkpoints (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, concern_id INTEGER NOT NULL, title TEXT, description TEXT, comment TEXT, status TEXT)", [], null, null)
 		}
 	)	
 }

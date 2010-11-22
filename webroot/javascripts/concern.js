@@ -35,6 +35,7 @@ Concern.prototype.loadCheckpoints = function(tx) {
 				checkpoint.title = record['title']
 				checkpoint.description = record['description']
 				checkpoint.comment = record['comment']
+				checkpoint.status = record['status']
 			
 				concern.checkpoints.push(checkpoint)
 				checkpoint.concern = concern

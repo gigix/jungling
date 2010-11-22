@@ -52,6 +52,7 @@
 			<div id='description' class='list-item'></div>
 			<div class='list-item'>
 				<textarea id='comment'></textarea>
+				<div id='operations'></div>
 			</div>
 		</div>
 	</div>
@@ -94,7 +95,7 @@
 	function showCheckpointDetail(checkpoint) {
 		var concern = checkpoint.concern
 		var pane = $('#checkpointDetailPane')
-		pane.find('.title').text('Checkpoint of [ ' + concern.inception.title + ' > ' + concern.title + ' > ' + checkpoint.title + ' ]')
+		pane.find('.title').text('Checkpoint of [ ' + concern.inception.title + ' > ' + concern.title + ' > ' + checkpoint.title + ' ] ' + checkpoint.status)
 		
 		var backButton = $("<input class='back-button' type='button' value='Back' />")
 		backButton.click(function() {
@@ -107,19 +108,18 @@
 		
 		var commentTextArea = pane.find('#comment')
 		commentTextArea.val(checkpoint.comment)
+
+		var saveButton = checkpoint.saveButton('Save Comment', commentTextArea)
+		var notDoneButton = checkpoint.saveButton('Not Done Yet...', commentTextArea, Status.NOT_DONE)
+		var doneButton = checkpoint.saveButton('Done!', commentTextArea, Status.DONE)
+		var notNeededButton = checkpoint.saveButton("We Don't Need This", commentTextArea, Status.NOT_NEEDED)
 		
-		var saveButton = $("<input type='button' value='Save Comment' />")
-		saveButton.click(function() {
-			checkpoint.comment = commentTextArea.val()
-			transactional(function(tx) { 
-				checkpoint.update(tx) 
-			})
-			
-			transactional(function() {
-				alert("Comment has been saved")				
-			})
-		})
-		commentTextArea.after(saveButton)
+		var operationsDiv = pane.find('#operations')
+		operationsDiv.empty()
+		operationsDiv.append(saveButton)
+		operationsDiv.append(notDoneButton)
+		operationsDiv.append(doneButton)
+		operationsDiv.append(notNeededButton)
 
 		showPane(pane)
 	}
