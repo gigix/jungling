@@ -1,11 +1,3 @@
-if(typeof Status == "undefined"){
-	var Status = {
-		NOT_DONE: 'Not Done Yet',
-		DONE: 'Done',
-		NOT_NEEDED: 'Not Needed'
-	}
-}
-
 function Checkpoint(title, description) {
 	this.id = -1
 	this.concern_id = -1
@@ -28,6 +20,10 @@ Checkpoint.prototype.update = function(tx) {
 			alert('Error: ' + JSON.stringify(error))
 		}
 	)
+}
+
+Checkpoint.prototype.getStatus = function() {
+	return this.status
 }
 
 Checkpoint.prototype.saveButton = function(label, commentTextArea, status) {

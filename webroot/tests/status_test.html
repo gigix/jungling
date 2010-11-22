@@ -1,0 +1,67 @@
+<html>
+ <head>
+  <title>Test Page for Inception status</title>
+  	<script language="javascript" src="jsunit/app/jsUnitCore.js"></script>
+
+	<script language="javascript" src="../javascripts/application.js"></script>
+	<script language="javascript" src="../javascripts/inception.js"></script>
+	<script language="javascript" src="../javascripts/concern.js"></script>
+	<script language="javascript" src="../javascripts/checkpoint.js"></script>
+	<script language="javascript" src="../javascripts/status.js"></script>
+ </head>
+ <body>
+  <script language="javascript">
+	function setUp() {
+		checkpoint_done = new Checkpoint()
+		checkpoint_done.status = Status.DONE
+
+		checkpoint_not_done = new Checkpoint()
+		checkpoint_not_done.status = Status.NOT_DONE
+
+		checkpoint_not_needed = new Checkpoint()
+		checkpoint_not_needed.status = Status.NOT_NEEDED
+
+		concern_done = new Concern()
+		concern_done.checkpoints = [checkpoint_done]
+		
+		concern_done_with_not_needed = new Concern()
+		concern_done_with_not_needed.checkpoints = [checkpoint_done, checkpoint_not_needed]
+		
+		concern_not_done = new Concern()
+		concern_not_done.checkpoints = [checkpoint_done, checkpoint_not_done]
+		
+		concern_not_needed = new Concern()
+		concern_not_needed.checkpoints = [checkpoint_not_needed]
+		
+		inception = new Inception()
+	}
+	
+	function test_concern_with_only_done_checkpoint_has_status_done() {
+		assertEquals(Status.DONE, concern_done.getStatus())
+	}
+	
+	function test_concern_with_not_done_checkpoint_has_status_not_done() {
+		assertEquals(Status.NOT_DONE, concern_not_done.getStatus())
+	}
+	
+	function test_concern_with_done_and_not_need_checkpoints_has_status_done() {
+		assertEquals(Status.DONE, concern_done_with_not_needed.getStatus())
+	}
+	
+	function test_concern_with_only_not_need_checkpoints_has_status_not_need() {
+		assertEquals(Status.NOT_NEEDED, concern_not_needed.getStatus())
+	}
+	
+	function test_inception_summarizes_status_of_concerns() {
+		inception.concerns = [concern_done, concern_done_with_not_needed]
+		assertEquals(Status.DONE, inception.getStatus())
+		
+		inception.concerns = [concern_done, concern_done_with_not_needed, concern_not_done]
+		assertEquals(Status.NOT_DONE, inception.getStatus())
+
+		inception.concerns = [concern_not_needed]
+		assertEquals(Status.NOT_NEEDED, inception.getStatus())
+	}
+  </script>
+ </body>
+</html>

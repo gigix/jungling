@@ -42,6 +42,10 @@ Inception.prototype.create = function(tx) {
 	)
 }
 
+Inception.prototype.getStatus = function() {
+	return summarizeStatus(this.concerns)
+}
+
 function viewInception(inceptionId) {
 	transactional(function() {
 		var loadInceptionWithinTransaction;

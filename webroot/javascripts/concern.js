@@ -44,3 +44,7 @@ Concern.prototype.loadCheckpoints = function(tx) {
 		null
 	)
 }
+
+Concern.prototype.getStatus = function() {
+	return summarizeStatus(this.checkpoints)
+}

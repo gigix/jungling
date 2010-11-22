@@ -9,6 +9,7 @@
   	<script language="javascript" src="javascripts/inception.js"></script>
   	<script language="javascript" src="javascripts/concern.js"></script>
   	<script language="javascript" src="javascripts/checkpoint.js"></script>
+	<script language="javascript" src="javascripts/status.js"></script>
     <title>Jungling</title>
 
 </head>
@@ -74,13 +75,13 @@
 	
 	function showConcernsList(inception) {
 		var pane = $('#concernsPane')
-		pane.find('.title').text('Concerns Of [ ' + inception.title + ' ]' )
+		pane.find('.title').text('Concerns Of [ ' + inception.title + ' ] ' + inception.getStatus() )
 		showList(pane, inception.concerns, showCheckpointsList)		
 	}
 	
 	function showCheckpointsList(concern) {
 		var pane = $('#checkpointsPane')
-		pane.find('.title').text('Checkpoints Of [ ' + concern.inception.title + ' > ' + concern.title + ' ]')
+		pane.find('.title').text('Checkpoints Of [ ' + concern.inception.title + ' > ' + concern.title + ' ] ' + concern.getStatus())
 		
 		var backButton = $("<input class='back-button' type='button' value='Back' />")
 		backButton.click(function() {
@@ -95,7 +96,7 @@
 	function showCheckpointDetail(checkpoint) {
 		var concern = checkpoint.concern
 		var pane = $('#checkpointDetailPane')
-		pane.find('.title').text('Checkpoint of [ ' + concern.inception.title + ' > ' + concern.title + ' > ' + checkpoint.title + ' ] ' + checkpoint.status)
+		pane.find('.title').text('Checkpoint of [ ' + concern.inception.title + ' > ' + concern.title + ' > ' + checkpoint.title + ' ] ' + checkpoint.getStatus())
 		
 		var backButton = $("<input class='back-button' type='button' value='Back' />")
 		backButton.click(function() {
