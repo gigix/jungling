@@ -20,6 +20,14 @@ body {
 	padding-left: 1em;
 }
 
+.breadcrumb-item {
+	cursor: pointer;
+}
+
+.breadcrumb-item:hover {
+	text-decoration: underline;
+}
+
 .toolbar .buttons {
 	float:right; 
 	padding-right: 1em;

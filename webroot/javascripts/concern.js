@@ -48,3 +48,22 @@ Concern.prototype.loadCheckpoints = function(tx) {
 Concern.prototype.getStatus = function() {
 	return summarizeStatus(this.checkpoints)
 }
+
+Concern.prototype.breadcrumb = function(viewHandler) {
+	var breadcrumbDiv = this.linkToInception(viewHandler)
+	breadcrumbDiv.append($("<span> > " + this.title + "</span>"))	
+	return breadcrumbDiv
+}
+
+Concern.prototype.linkToInception = function(viewHandler) {
+	var breadcrumbDiv = $("<div class='breadcrumb'></div>")
+	
+	var inception = this.inception
+	var inceptionLink = $("<a class='breadcrumb-item'>" + inception.title + "</a>")
+	inceptionLink.click(function() {
+		viewHandler(inception)
+	})
+	breadcrumbDiv.append(inceptionLink)
+	
+	return breadcrumbDiv
+}

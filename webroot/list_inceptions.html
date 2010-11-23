@@ -79,13 +79,17 @@
 	
 	function showConcernsList(inception) {
 		var pane = $('#concernsPane')
-		pane.find('.title').text('Concerns Of [ ' + inception.title + ' ] ' + inception.getStatus() )
+		var titleContainer = pane.find('.title')
+		titleContainer.text(inception.title)
 		showList(pane, inception.concerns, showCheckpointsList)		
 	}
 	
 	function showCheckpointsList(concern) {
 		var pane = $('#checkpointsPane')
-		pane.find('.title').text('Checkpoints Of [ ' + concern.inception.title + ' > ' + concern.title + ' ] ' + concern.getStatus())
+		
+		var titleContainer = pane.find('.title')
+		titleContainer.empty()
+		titleContainer.append(concern.breadcrumb(showConcernsList))
 		
 		var backButton = $("<img alt='Back' src='images/round_arrow_left.png' />")
 		backButton.click(function() {
@@ -100,7 +104,10 @@
 	function showCheckpointDetail(checkpoint) {
 		var concern = checkpoint.concern
 		var pane = $('#checkpointDetailPane')
-		pane.find('.title').text('Checkpoint of [ ' + concern.inception.title + ' > ' + concern.title + ' > ' + checkpoint.title + ' ] ' + checkpoint.getStatus())
+		
+		var titleContainer = pane.find('.title')
+		titleContainer.empty()
+		titleContainer.append(checkpoint.breadcrumb(showCheckpointsList, showConcernsList))
 		
 		var backButton = $("<img alt='Back' src='images/round_arrow_left.png' />")
 		backButton.click(function() {
@@ -109,15 +116,20 @@
 		pane.find('.buttons').empty()
 		pane.find('.buttons').append(backButton)
 		
-		pane.find('#description').text(checkpoint.description)
+		var descriptionContainer = pane.find('#description')
+		descriptionContainer.text(checkpoint.description)
+		
+		var statusContainer = $("<div></div>")
+		statusContainer.append(statusTag(checkpoint))
+		descriptionContainer.append(statusContainer)
 		
 		var commentTextArea = pane.find('#comment')
 		commentTextArea.val(checkpoint.comment)
 
 		var saveButton = checkpoint.saveButton('images/save.png', commentTextArea)
-		var notDoneButton = checkpoint.saveButton('images/redo.png', commentTextArea, Status.NOT_DONE)
+		var notDoneButton = checkpoint.saveButton('images/fire-32.png', commentTextArea, Status.NOT_DONE)
 		var doneButton = checkpoint.saveButton('images/checkmark.png', commentTextArea, Status.DONE)
-		var notNeededButton = checkpoint.saveButton("images/delete.png", commentTextArea, Status.NOT_NEEDED)
+		var notNeededButton = checkpoint.saveButton("images/hand_contra-32.png", commentTextArea, Status.NOT_NEEDED)
 		
 		var operationsDiv = pane.find('#operations')
 		operationsDiv.empty()

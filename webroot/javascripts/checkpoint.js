@@ -45,3 +45,19 @@ Checkpoint.prototype.saveButton = function(image, commentTextArea, status) {
 	})
 	return button
 }
+
+Checkpoint.prototype.breadcrumb = function(concernViewHandler, inceptionViewHandler) {
+	var concern = this.concern
+	var breadcrumbDiv = concern.linkToInception(inceptionViewHandler)
+	
+	breadcrumbDiv.append($('<span> > </span>'))
+	
+	var concernLink = $("<a class='breadcrumb-item'>" + concern.title + "</a>")
+	concernLink.click(function() {
+		concernViewHandler(concern)
+	})
+	breadcrumbDiv.append(concernLink)
+	
+	breadcrumbDiv.append($("<span> > " + this.title + "</span>"))
+	return breadcrumbDiv
+}

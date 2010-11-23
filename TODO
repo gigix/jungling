@@ -12,7 +12,7 @@ Update Checkpoint: add comment											DONE
 Mark Checkpoint as "Not Done Yet", "Done" or "Don't Need"				DONE
 Summarize status to Concerns and Inception								DONE
 Status visualization													DONE
-Breadcrumb
+Breadcrumb																DONE
 Add comment to Inception
 
 [Could Have]
@@ -22,7 +22,7 @@ Sync with a knowledge base
 
 ===== Tasks =====
 index.html: initialize DB if necessary									DONE
-UI tidy up
+UI tidy up																DONE
 Test with iPad
 Create a usable Inception template
 DB migration
