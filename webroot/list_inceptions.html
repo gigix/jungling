@@ -146,7 +146,7 @@
 		container.empty()
 
 		transactional(function(){
-			$.each(items, function(index, item){
+			$.each(items.sort(priority), function(index, item){
 				var itemDiv = $("<div class='list-item'>" + item.title + '&nbsp;' + statusTag(item) + "</div>")
 				itemDiv.click(
 					function() {

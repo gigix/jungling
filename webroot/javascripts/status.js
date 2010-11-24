@@ -36,3 +36,15 @@ function statusIcon(item) {
 function statusTag(item) {
 	return "<img src='images/" + statusIcon(item) + "' />"
 }
+
+function toPriority(item) {
+	switch(item.getStatus()) {
+		case Status.NOT_DONE: return 1
+		case Status.DONE: return 2
+		default: return 3
+	}
+}
+
+function priority(item_1, item_2) {
+	return toPriority(item_1) - toPriority(item_2)
+}

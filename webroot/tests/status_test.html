@@ -62,6 +62,16 @@
 		inception.concerns = [concern_not_needed]
 		assertEquals(Status.NOT_NEEDED, inception.getStatus())
 	}
+	
+	function test_stuff_prioritization() {
+		assertArrayEquals([concern_not_needed], [concern_not_needed])
+		var concerns = [concern_not_needed, concern_not_done, concern_done_with_not_needed, concern_done].sort(priority)
+		assertArrayEquals([concern_not_done, concern_done_with_not_needed, concern_done, concern_not_needed], concerns)
+	}
+	
+	function assertArrayEquals(expected, actual) {
+		assertEquals(JSON.stringify(expected), JSON.stringify(actual))
+	}
   </script>
  </body>
 </html>

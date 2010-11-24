@@ -5,4 +5,3 @@ function transactional(func) {
 		func(tx)
 	})
 }
-
