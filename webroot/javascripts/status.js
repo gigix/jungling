@@ -23,13 +23,13 @@ function summarizeStatus(children) {
 function statusIcon(item) {
 	var status = item.getStatus()
 	if(status == Status.DONE) {
-		return 'emotion_smile.png'
+		return 'emotion_smile-32.png'
 	}
 	if(status == Status.NOT_DONE) {
-		return 'fire.png'
+		return 'fire-32.png'
 	}
 	if(status == Status.NOT_NEEDED) {
-		return 'hand_contra.png'
+		return 'hand_contra-32.png'
 	}
 }
 

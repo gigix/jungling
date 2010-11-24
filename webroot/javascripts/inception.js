@@ -56,7 +56,8 @@ function createInception(title) {
 	var inception = new Inception(title)
 	
 	var integration_concern = new Concern('Integration')
-	integration_concern.checkpoints.push(new Checkpoint('Integration Map', 'Have you drawn an integration map?'))
+	integration_concern.checkpoints.push(new Checkpoint('Integration Map', 
+		"Two weeks ago Rolf Harms and Michael Yamartino of Microsoft published a whitepaper entitled The Economics of the Cloud. In the whitepaper, they predict a seismic shift within the IT world away from client/server to public clouds, ala Amazon AWS and Microsoft Azure. The document clearly outlines their technical and business plan for a Brave New Microsoft."))
 	integration_concern.checkpoints.push(new Checkpoint('Spikes', 'Have you done all the integration spikes?'))
 	inception.concerns.push(integration_concern)
 	

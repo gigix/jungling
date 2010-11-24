@@ -8,11 +8,15 @@ body {
 	background-color: #354F6E;
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#7C9BC0), color-stop(0.02, #466890), to(#293E56));
 	
-	font-size: 1.2em;
+	font-size: 2em;
 	font-weight: bold;
 	text-align: center;
-	height: 45px;
+	height: 60px;
 	padding-top: 15px;
+}
+
+.toolbar .text-field {
+	font-size: 0.8em;
 }
 
 .toolbar .title {
@@ -40,11 +44,12 @@ body {
 	border-bottom-width: 1px;
 	
 	color: black;
+	font-size: 2em;
 	min-height: 2em;
 	padding-left:0.8em;
-	padding-right:0.8em;
-	padding-top:1em;
-	padding-bottom: 0.5em;
+	padding-right:2em;
+	padding-top:0.5em;
+	padding-bottom: 0.1em;
 }
 
 .list-item.selected {
@@ -70,4 +75,8 @@ body {
 textarea {
 	height: 300px;
 	width: 400px;
+}
+
+.detail-paragraph {
+	font-size: 1.5em;
 }

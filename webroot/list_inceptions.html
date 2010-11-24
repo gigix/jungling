@@ -19,7 +19,7 @@
 		<div class='toolbar'>
 			<div class='title'>Inceptions</div>
 			<div class='buttons'>
-				<input id='inceptionName' style='font-size: 15px' />
+				<input id='inceptionName' class='text-field' />
 				<img alt='New Inception' onclick="startNewInception()"
 					src="images/round_plus.png" />
 			</div>
@@ -54,9 +54,9 @@
 			<div class='buttons'></div>
 		</div>
 		<div class="detail-container">
-			<div id='description' class='list-item'></div>
+			<div id='description' class='list-item detail-paragraph'></div>
 			<div class='list-item'>
-				<textarea id='comment'></textarea>
+				<textarea id='comment' class='detail-paragraph'></textarea>
 				<div id='operations'></div>
 			</div>
 		</div>
@@ -119,7 +119,7 @@
 		var descriptionContainer = pane.find('#description')
 		descriptionContainer.text(checkpoint.description)
 		
-		var statusContainer = $("<div></div>")
+		var statusContainer = $("<div><br/></div>")
 		statusContainer.append(statusTag(checkpoint))
 		descriptionContainer.append(statusContainer)
 		
