@@ -125,15 +125,18 @@
 		
 		var commentTextArea = pane.find('#comment')
 		commentTextArea.val(checkpoint.comment)
+		commentTextArea.unbind()
+		commentTextArea.blur(function() {
+			checkpoint.saveWith(commentTextArea, showCheckpointDetail)
+			return true
+		})
 
-		var saveButton = checkpoint.saveButton('images/save.png', commentTextArea)
-		var notDoneButton = checkpoint.saveButton('images/fire-32.png', commentTextArea, Status.NOT_DONE)
-		var doneButton = checkpoint.saveButton('images/checkmark.png', commentTextArea, Status.DONE)
-		var notNeededButton = checkpoint.saveButton("images/hand_contra-32.png", commentTextArea, Status.NOT_NEEDED)
+		var notDoneButton = checkpoint.saveButton('images/fire-32.png', commentTextArea, showCheckpointDetail, Status.NOT_DONE)
+		var doneButton = checkpoint.saveButton('images/checkmark.png', commentTextArea, showCheckpointDetail, Status.DONE)
+		var notNeededButton = checkpoint.saveButton("images/hand_contra-32.png", commentTextArea, showCheckpointDetail, Status.NOT_NEEDED)
 		
 		var operationsDiv = pane.find('#operations')
 		operationsDiv.empty()
-		operationsDiv.append(saveButton)
 		operationsDiv.append(notDoneButton)
 		operationsDiv.append(doneButton)
 		operationsDiv.append(notNeededButton)

@@ -26,24 +26,29 @@ Checkpoint.prototype.getStatus = function() {
 	return this.status
 }
 
-Checkpoint.prototype.saveButton = function(image, commentTextArea, status) {
+Checkpoint.prototype.saveButton = function(image, commentTextArea, postHandler, status) {
 	var button = $("<img src='" + image + "' />")
 	var checkpoint = this
 	button.click(function() {
-		checkpoint.comment = commentTextArea.val()
-		if(status != undefined) {
-			checkpoint.status = status
-		}
-		transactional(function(tx) { 
-			checkpoint.update(tx) 
-		})
-		
-		transactional(function() {
-			alert("Save succeeded!")				
-			showCheckpointDetail(checkpoint)		
-		})
+		checkpoint.saveWith(commentTextArea, postHandler, status)
 	})
 	return button
+}
+
+Checkpoint.prototype.saveWith = function(commentTextArea, postHandler, status) {
+	var checkpoint = this
+	checkpoint.comment = commentTextArea.val()
+	if(status != undefined) {
+		checkpoint.status = status
+	}
+	transactional(function(tx) { 
+		checkpoint.update(tx) 
+	})
+	
+	transactional(function() {
+		// alert("Save succeeded!")				
+		postHandler(checkpoint)		
+	})
 }
 
 Checkpoint.prototype.breadcrumb = function(concernViewHandler, inceptionViewHandler) {
