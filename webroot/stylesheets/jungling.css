@@ -80,3 +80,17 @@ textarea {
 .detail-paragraph {
 	font-size: 1.5em;
 }
+
+#welcome {
+	text-align: center;
+	padding: 2em;
+}
+
+#welcome .slogan {
+	font-size: 6em;
+	padding-bottom: 0.5em;
+}
+
+#welcome .slogan a {
+	color: black;
+}

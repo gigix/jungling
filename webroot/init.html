@@ -2,16 +2,24 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	<link rel="stylesheet" href="stylesheets/jungling.css" type="text/css"/>
+
+    <script type="text/javascript" src="javascripts/jquery-1.4.4.js"></script>
   	<script language="javascript" src="javascripts/application.js"></script>
   	<script language="javascript" src="javascripts/db_utils.js"></script>
   	<script language="javascript" src="javascripts/inception.js"></script>
   	<script language="javascript" src="javascripts/concern.js"></script>
   	<script language="javascript" src="javascripts/checkpoint.js"></script>
   	<script language="javascript" src="javascripts/status.js"></script>
-    <title>Jungling  | Initialize Application</title>
+    <title>Jungling  | Welcome, New Comer!</title>
 </head>
 
 <body>	
+	<div id='welcome'>
+		<div class='detail-paragraph'>Now you are prepared to</div>
+		<div class='slogan'><a href='list_inceptions.html'>Start Jungling!</a></div>
+		<div><a href='list_inceptions.html'><img src='images/jungle.jpg' width='80%' /></a></div>
+	</div>
 	<script>
 		initializeDatabase()
 		createInception("Hub Online")
@@ -20,10 +28,9 @@
 		var inceptions = listInceptions()
 		
 		transactional(function() {
-			alert('' + inceptions.length + ' inceptions has been created')
+			$('welcome').show()
 		})
 	</script>
-	<div>Now you can <a href='list_inceptions.html' />start to use Jungling</a></div>
 </body>
 
 </html>
