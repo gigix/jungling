@@ -15,12 +15,15 @@
 </head>
 
 <body>	
-	<div id='welcome'>
+	<div id='preload-images' style='display:none;'></div>
+	<div id='welcome' style='display:none;'>
 		<div class='detail-paragraph'>Now you are prepared to</div>
 		<div class='slogan'><a href='list_inceptions.html'>Start Jungling!</a></div>
-		<div><a href='list_inceptions.html'><img src='images/jungle.jpg' width='80%' /></a></div>
+		<div><a href='list_inceptions.html'><img src='images/jungle.jpg' width='60%' /></a></div>
 	</div>
 	<script>
+		preloadImages()
+	
 		initializeDatabase()
 		createInception("Hub Online")
 		createInception("LPI")
@@ -28,8 +31,18 @@
 		var inceptions = listInceptions()
 		
 		transactional(function() {
-			$('welcome').show()
+			$('#welcome').slideDown(3000)
 		})
+		
+		function preloadImages() {
+			var images = ["arrow_right.png", "checkmark.png", "delete.png", "emotion_smile-32.png", "emotion_smile.png", "fire-32.png", 
+				"fire.png", "hand_contra-32.png", "hand_contra.png", "hand_pro.png", "redo.png", "round_arrow_left.png", 
+			 	"round_arrow_right.png", "round_plus.png", "save.png"]
+			$.each(images, function(index, image) {
+				var imageTag = $("<img src='images/" + image + "' />")
+				$('#preload-images').append(imageTag)
+			})
+		}
 	</script>
 </body>
 
