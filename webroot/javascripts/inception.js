@@ -52,19 +52,22 @@ function viewInception(inceptionId) {
 	})
 }
 
-function createInception(title) {
-	var inception = new Inception(title)
+function createInception(title, status) {
+	var inceptionAsJson = inceptionTemplate(title)
 	
-	var integration_concern = new Concern('Integration')
-	integration_concern.checkpoints.push(new Checkpoint('Integration Map', 
-		"Two weeks ago Rolf Harms and Michael Yamartino of Microsoft published a whitepaper entitled The Economics of the Cloud. In the whitepaper, they predict a seismic shift within the IT world away from client/server to public clouds, ala Amazon AWS and Microsoft Azure. The document clearly outlines their technical and business plan for a Brave New Microsoft."))
-	integration_concern.checkpoints.push(new Checkpoint('Spikes', 'Have you done all the integration spikes?'))
-	inception.concerns.push(integration_concern)
-	
-	var migration_concern = new Concern('Data Migration')
-	migration_concern.checkpoints.push(new Checkpoint('Data Dump', 'Have you got a usable dump of existing database?'))
-	inception.concerns.push(migration_concern)
-	
+	var inception = new Inception(inceptionAsJson.title)
+	$.each(inceptionAsJson.concerns, function(index, concernAsJson) {
+		var concern = new Concern(concernAsJson.title)		
+		$.each(concernAsJson.checkpoints, function(index, checkpointAsJson) {
+			var checkpoint = new Checkpoint(checkpointAsJson.title, checkpointAsJson.description)
+			if(status) {
+				checkpoint.status = status
+			}
+			concern.checkpoints.push(checkpoint)
+		})
+		inception.concerns.push(concern)
+	})
+		
 	db.transaction(function(tx) {inception.create(tx) })
 }
 

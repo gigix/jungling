@@ -7,6 +7,7 @@ body {
 	color: white;
 	background-color: #354F6E;
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#7C9BC0), color-stop(0.02, #466890), to(#293E56));
+	border-radius: 15px;
 	
 	font-size: 2em;
 	font-weight: bold;
@@ -36,6 +37,10 @@ body {
 	float:right; 
 	padding-right: 1em;
 	cursor: pointer;
+}
+
+.toolbar .buttons img {
+	margin-left: 0.4em;
 }
 
 .list-item {

@@ -15,6 +15,8 @@
 </head>
 
 <body>
+	<div id='preload-images' style='display:none;'></div>
+
 	<div id='inceptionsPane' class='pane'>
 		<div class='toolbar'>
 			<div class='title'>Inceptions</div>
@@ -31,10 +33,7 @@
 		<div class='toolbar'>
 			<div class='title'></div>
 			<div class='buttons'>
-				<div class='back-button'>
-					<img alt='Back' onclick="showInceptionsList()"
-						src="images/round_arrow_left.png" />
-				</div>
+				<div class='back-button'></div>
 			</div>
 		</div>
 		<div class="list-container"></div>
@@ -63,12 +62,25 @@
 	</div>
 	
 	<script>
+	function showNavigationButtons(pane, goBack) {
+		var backButton = $("<img alt='Back' src='images/round_arrow_left.png' />")
+		backButton.click(goBack)
+		
+		var homeButton = $("<img alt='Home' onclick='showInceptionsList()' src='images/home.png' />")
+		
+		var buttonsContainer = pane.find('.buttons')
+		buttonsContainer.empty()
+		buttonsContainer.append(backButton)
+		buttonsContainer.append(homeButton)
+	}
+	
 	function startNewInception() {
 		var name = $('#inceptionName').val()
 		if(name.length == 0) {
 			alert("Please input Inception name")
 			return
 		}
+		$('#inceptionName').val('')
 		createInception(name)
 		showInceptionsList()
 	}
@@ -79,26 +91,25 @@
 	
 	function showConcernsList(inception) {
 		var pane = $('#concernsPane')
+		showList(pane, inception.concerns, showCheckpointsList)			
+
 		var titleContainer = pane.find('.title')
 		titleContainer.text(inception.title)
-		showList(pane, inception.concerns, showCheckpointsList)		
+
+		showNavigationButtons(pane, showInceptionsList)
 	}
 	
 	function showCheckpointsList(concern) {
 		var pane = $('#checkpointsPane')
+		showList(pane, concern.checkpoints, showCheckpointDetail)
 		
 		var titleContainer = pane.find('.title')
 		titleContainer.empty()
 		titleContainer.append(concern.breadcrumb(showConcernsList))
-		
-		var backButton = $("<img alt='Back' src='images/round_arrow_left.png' />")
-		backButton.click(function() {
+				
+		showNavigationButtons(pane, function() {
 			showConcernsList(concern.inception)
 		})
-		pane.find('.buttons').empty()
-		pane.find('.buttons').append(backButton)
-		
-		showList(pane, concern.checkpoints, showCheckpointDetail)
 	}
 	
 	function showCheckpointDetail(checkpoint) {
@@ -110,11 +121,9 @@
 		titleContainer.append(checkpoint.breadcrumb(showCheckpointsList, showConcernsList))
 		
 		var backButton = $("<img alt='Back' src='images/round_arrow_left.png' />")
-		backButton.click(function() {
+		showNavigationButtons(pane, function() {
 			showCheckpointsList(concern)
 		})
-		pane.find('.buttons').empty()
-		pane.find('.buttons').append(backButton)
 		
 		var descriptionContainer = pane.find('#description')
 		descriptionContainer.text(checkpoint.description)
@@ -183,6 +192,17 @@
 		pane.show()		
 	}
 	
+	function preloadImages() {
+		var images = ["arrow_right.png", "checkmark.png", "delete.png", "emotion_smile-32.png", "emotion_smile.png", "fire-32.png", 
+			"fire.png", "hand_contra-32.png", "hand_contra.png", "hand_pro.png", "home.png", "redo.png", "round_arrow_left.png", 
+		 	"round_arrow_right.png", "round_plus.png", "save.png"]
+		$.each(images, function(index, image) {
+			var imageTag = $("<img src='images/" + image + "' />")
+			$('#preload-images').append(imageTag)
+		})
+	}
+	
+	preloadImages()
 	showInceptionsList()
 	</script>
 </body>
