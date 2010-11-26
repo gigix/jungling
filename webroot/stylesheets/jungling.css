@@ -16,6 +16,11 @@ body {
 	padding-top: 15px;
 }
 
+.toolbar .export-link {
+	padding-left: 0.5em;
+	cursor: pointer;
+}
+
 .toolbar .text-field {
 	font-size: 0.8em;
 }

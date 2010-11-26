@@ -17,41 +17,41 @@
 <body>
 	<div id='preload-images' style='display:none;'></div>
 
-	<div id='inceptionsPane' class='pane'>
-		<div class='toolbar'>
-			<div class='title'>Inceptions</div>
-			<div class='buttons'>
-				<input id='inceptionName' class='text-field' />
+	<section id='inceptionsPane' class='pane'>
+		<header class='toolbar'>
+			<nav class='title'>Inceptions</nav>
+			<nav class='buttons'>
+				<input id='inceptionName' class='text-field' placeholder='New Inception ...' />
 				<img alt='New Inception' onclick="startNewInception()"
 					src="images/round_plus.png" />
-			</div>
-		</div>
+			</nav>
+		</header>
 		<div class="list-container"></div>
-	</div>
+	</section>
 	
-	<div id='concernsPane' class='pane' style='display:none;'>
-		<div class='toolbar'>
-			<div class='title'></div>
-			<div class='buttons'>
+	<section id='concernsPane' class='pane' style='display:none;'>
+		<header class='toolbar'>
+			<nav class='title'></nav>
+			<nav class='buttons'>
 				<div class='back-button'></div>
-			</div>
-		</div>
+			</nav>
+		</header>
 		<div class="list-container"></div>
-	</div>
+	</section>
 	
-	<div id='checkpointsPane' class='pane' style='display:none;'>
-		<div class='toolbar'>
-			<div class='title'></div>
-			<div class='buttons'></div>
-		</div>
+	<section id='checkpointsPane' class='pane' style='display:none;'>
+		<header class='toolbar'>
+			<nav class='title'></nav>
+			<nav class='buttons'></nav>
+		</header>
 		<div class="list-container"></div>
-	</div>
+	</section>
 	
-	<div id='checkpointDetailPane' class='pane' style='display:none;'>
-		<div class='toolbar'>
-			<div class='title'></div>
-			<div class='buttons'></div>
-		</div>
+	<section id='checkpointDetailPane' class='pane' style='display:none;'>
+		<header class='toolbar'>
+			<nav class='title'></nav>
+			<nav class='buttons'></nav>
+		</header>
 		<div class="detail-container">
 			<div id='description' class='list-item detail-paragraph'></div>
 			<div class='list-item'>
@@ -59,7 +59,7 @@
 				<div id='operations'></div>
 			</div>
 		</div>
-	</div>
+	</section>
 	
 	<script>
 	function showNavigationButtons(pane, goBack) {
@@ -95,6 +95,9 @@
 
 		var titleContainer = pane.find('.title')
 		titleContainer.text(inception.title)
+		
+		var exportLink = $("<img src='images/doc_lines.png' class='export-link' />")
+		titleContainer.append(exportLink)
 
 		showNavigationButtons(pane, showInceptionsList)
 	}
