@@ -2,16 +2,29 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	<link rel="stylesheet" href="stylesheets/jungling.css" type="text/css"/>
+
+    <script type="text/javascript" src="javascripts/jquery-1.4.4.js"></script>
   	<script language="javascript" src="javascripts/application.js"></script>
   	<script language="javascript" src="javascripts/db_utils.js"></script>
-    <title>Jungling  | Drop All Tables</title>
+    <title>Jungling  | Welcome!</title>
 </head>
 
 <body>	
+	<div id='welcome' style='display: none;'>
+		<div class='detail-paragraph'>
+			Now you can 
+			<a href='init.html' onclick="return confirm('All existing data would be destroyed. Are you sure?')">re-initialize the application</a>, 
+			or simply ...
+		</div>
+		<div class='slogan'><a href='list_inceptions.html'>Start Jungling!</a></div>
+		<div><a href='list_inceptions.html'><img src='images/jungle.jpg' width='60%' /></a></div>
+	</div>
+	
 	<script>
 		verifyDatabase(
 			function() {
-				window.location.href = 'list_inceptions.html'
+				$('#welcome').slideDown(3000)
 			},
 			function() {
 				window.location.href = 'init.html'
