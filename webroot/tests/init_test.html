@@ -1,0 +1,20 @@
+<html>
+ <head>
+  <title>Test page for data initialization</title>
+  	<script language="javascript" src="jsunit/app/jsUnitCore.js"></script>
+
+	<script language="javascript" src="../javascripts/application.js"></script>
+	<script language="javascript" src="../javascripts/inception.js"></script>
+	<script language="javascript" src="../javascripts/concern.js"></script>
+	<script language="javascript" src="../javascripts/checkpoint.js"></script>
+	<script language="javascript" src="../javascripts/status.js"></script>
+ </head>
+ <body>
+  <script language="javascript">
+    function test_inception_template_should_include_10_concerns() {
+        var inceptionAsJson = inceptionTemplate('test')
+		assertEquals(10, inceptionAsJson.concerns.length)
+    }
+  </script>
+ </body>
+</html>

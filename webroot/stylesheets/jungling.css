@@ -91,6 +91,11 @@ textarea {
 	font-size: 1.5em;
 }
 
+em {
+	font-style: normal;
+	font-weight: bold;
+}
+
 #welcome {
 	text-align: center;
 	padding: 2em;

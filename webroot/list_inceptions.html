@@ -5,6 +5,8 @@
 	<link rel="stylesheet" href="stylesheets/jungling.css" type="text/css"/>
 	
     <script type="text/javascript" src="javascripts/jquery-1.4.4.js"></script>
+    <script type="text/javascript" src="javascripts/showdown.js"></script>
+
   	<script language="javascript" src="javascripts/application.js"></script>
   	<script language="javascript" src="javascripts/inception.js"></script>
   	<script language="javascript" src="javascripts/concern.js"></script>
@@ -129,7 +131,8 @@
 		})
 		
 		var descriptionContainer = pane.find('#description')
-		descriptionContainer.text(checkpoint.description)
+		descriptionContainer.empty()
+		descriptionContainer.append(checkpoint.getDescriptionHtml())
 		
 		var statusContainer = $("<div><br/></div>")
 		statusContainer.append(statusTag(checkpoint))

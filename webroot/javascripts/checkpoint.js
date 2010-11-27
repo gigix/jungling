@@ -26,6 +26,10 @@ Checkpoint.prototype.getStatus = function() {
 	return this.status
 }
 
+Checkpoint.prototype.getDescriptionHtml = function() {
+	return new Showdown.converter().makeHtml(this.description)
+}
+
 Checkpoint.prototype.saveButton = function(image, commentTextArea, postHandler, status) {
 	var button = $("<img src='" + image + "' />")
 	var checkpoint = this
