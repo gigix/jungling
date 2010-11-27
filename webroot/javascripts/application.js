@@ -72,15 +72,24 @@ function inceptionTemplate(title) {
 				'checkpoints': [
 					{
 						'title': 'Existing Systems',
-						'description': 'TBD'
+						'description': "Is there any legacy system to be integrated? How will they be integrated? \
+							Via API invocations? RESTful interfaces? Web Services? Database? File swapping? \
+							\n\nIt's helpful to draw an integration map, which includes all the relavant applications, \
+							then mark all integration points and integration approaches on the map. \
+							\n\nMake sure you are fully prepared to handle all the integration points. For example, \
+							\n\n  - you might need spike some technologies \
+							  \n  - you might need acquire a copy/image of the legacy system"
 					},
 					{
 						'title': '3rd Party Software',
-						'description': 'TBD'
+						'description': "Is there any 3rd party software you to be integrated? For example, online payment system (e.g. PayPal)? \
+							Any Google application to mashup? Microsoft Outlook (I REALLY hope you don't need this)? \
+							\n\nHave you got their API reference? Have you done sufficient spike?"
 					},
 					{
 						'title': 'Libraries',
-						'description': 'TBD'
+						'description': "Is there any other important libraries besides the foundation framework? \
+							Normally in-process libraries should be easy to handle. You just need think about it."
 					},
 				]
 			}, 
@@ -89,19 +98,34 @@ function inceptionTemplate(title) {
 				'checkpoints': [
 					{
 						'title': 'Migration',
-						'description': 'TBD'
+						'description': "How will the existing business data be migrated to work with new application? \
+							Will the migration happen only once? Or should it happen in an incremental manner? \
+							If the latter, how to trigger a partial migration? \
+							\n\nHow to develop migration scripts iteratively? How to manage and apply migration scripts? \
+							What's the backup/rollback strategy? \
+							\n\nIs there any existing data migration supporting tool (e.g. [dbdeploy])available? If not, it's worth to build one.\
+							\n\n[dbdeploy]:http://dbdeploy.com/"
 					},
 					{
 						'title': 'Data Dump',
-						'description': 'TBD'
+						'description': "You will need a database for development and test. If there's existing data, have you got a duplication of it? \
+							\n\n  - You might want dump production database directly, if possible. \
+							  \n  - Or you might want sanitize the production data and then dump it. \
+							  \n  - Or you might want a sanitized small subset of production data. \
+							\n\nAt least you need dump the production data structure (schema, triggers, stored procedures...everything except data). \
+							In this case, you need run data tests upon UAT with more real data frequently."
 					},
 					{
 						'title': 'Synchronization',
-						'description': 'TBD'
+						'description': "Is it necessary to keep synchronizing multiple databases? \
+							If so, how to implement the synchronization? With trigger? Scheduled stored procedure? \
+							Or any scheduled task outside of database (e.g. cron job)? \
+							\n\nHow to prevent data conflict from happening?"
 					},				
 					{
 						'title': 'Import / Export',
-						'description': 'TBD'
+						'description': "Is there any import/export requirement? \
+							How will the users use it? How will it impacts performance?"
 					},				
 				]
 			}, 
@@ -110,27 +134,53 @@ function inceptionTemplate(title) {
 				'checkpoints': [
 					{
 						'title': 'Unit Test',
-						'description': 'TBD'
+						'description': "What's the unit test framework? [JUnit]? [TestNG]? [Test::Unit]? [RSpec]? \
+						\n\n*Note:* Test frameworks support [Behaviour-Driven Development] are worth trying. \
+						\n\n[JUnit]:http://www.junit.org \
+						\n[TestNG]:http://testng.org/doc/index.html \
+						\n[Test::Unit]:http://test-unit.rubyforge.org/ \
+						\n[RSpec]:http://rspec.info/ \
+						\n[Behaviour-Driven Development]:http://behaviour-driven.org/"
 					},
 					{
 						'title': 'Functional Test',
-						'description': 'TBD'
+						'description': "How can the running system be tested as a black box? \
+							There are open source functional testing tools available, for example: \
+							\n\n - [Selenium] and [Watir]/[WatiN]/[Watij] for web applications \
+							  \n - [EFT] for .NET desktop applications \
+							  \n - [Marathon] for Java desktop applications \
+							  \n - [UISpec] for iPhone applications \
+							\n\nAlthough there are lots of commercial functional testing tools as well, however none of them are worth trying. \
+							\n\nIf there isn't existing open source functional testing tool for your application yet, probably you should build one. \
+							\n\n[Selenium]:http://selenium.openqa.org \
+							\n[Watir]:http://www.openqa.org/watir/ \
+							\n[WatiN]:http://watin.sourceforge.net/ \
+							\n[Watij]:http://watij.com/ \
+							\n[EFT]:http://code.google.com/p/eft/ \
+							\n[Marathon]:http://www.marathontesting.com/Home.html \
+							\n[UISpec]:http://code.google.com/p/uispec/"
 					},
 					{
-						'title': 'Integration Test',
-						'description': 'TBD'
+						'title': "Integration Test",
+						'description': "How to test the application integrated with other systems? Which integration points need to be tested? \
+							How to automate these tests?"
 					},				
 					{
 						'title': 'UAT',
-						'description': 'TBD'
+						'description': "How should the customer trial and verify the application? Where should the UAT environment be set? \
+							Who should be responsible to maintain the environment?"
 					},				
 					{
 						'title': 'Performance Test',
-						'description': 'TBD'
+						'description': "How to test performance of the application? Have you got the expected performance benchmark? \
+							There is a chapter in [ThoughtWorks Anthology] described a practical performance testing approach. \
+							\n\n[ThoughtWorks Anthology]:http://www.infoq.com/cn/minibooks/thoughtworks-anthology"
 					},				
 					{
 						'title': 'NFR Test',
-						'description': 'TBD'
+						'description': "Is there any other non-functional requirement besides performance? \
+							Has the customer defined acceptance criteria for these NFRs? \
+							How to automate these tests?"
 					},				
 				]
 			}, 
