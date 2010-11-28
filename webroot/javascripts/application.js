@@ -189,19 +189,29 @@ function inceptionTemplate(title) {
 				'checkpoints': [
 					{
 						'title': 'Production Env.',
-						'description': 'TBD'
+						'description': "Is the production environment ready? How can you access it? \
+							Have you got username/password of authorized account? Do you have VPN access (if necessary)? \
+							\n\nHow's the speed of download/upload? \
+							\n\nHave all foundamental software been installed? "
 					},
 					{
 						'title': 'Go Live',
-						'description': 'TBD'
+						'description': "What's the process to deploy the application? How to automate the process? \
+							Are you going to checkout/export from SCM repository directly? Or are you going to build a binary and then upload? \
+							\n\nFor Rails application, [Capistrano] is definitely worth trying. \
+							\n\n[Capistrano]:https://github.com/capistrano/capistrano/wiki/Documentation-v2.x"
 					},
 					{
 						'title': 'Backup',
-						'description': 'TBD'
+						'description': "Before the deployment, how do you backup existing application and/or storage? \
+							Do you duplicate folders and databases? Or do you simply snapshot virtual machines? \
+							Is versioned/timestamped backup necessary? How much storage and time will it cost? How do you automate the process?"
 					},				
 					{
 						'title': 'Roll Back',
-						'description': 'TBD'
+						'description': "If deployment has any problem, or if the application has any critical defect, \
+							how can you revert the deployment and roll back to a previous working version? \
+							How do you roll back application? How do you roll back database? How do you roll back information stored in file system?"
 					},				
 				]
 			}, 
@@ -210,23 +220,38 @@ function inceptionTemplate(title) {
 				'checkpoints': [
 					{
 						'title': 'Dev Machines',
-						'description': 'TBD'
+						'description': "Have you got enough computers (also, mice and keyboards) for your developers to pair? \
+							Do they have OS and development environment installed and properly configured? \
+							Can anyone checkout the codebase and build the system with a single command? \
+							Have you installed and configured IDE properly? \
+							\n\nHow do you make dev machines identical and easy to duplicate? With Ghost? Or virtual machine?"
 					},
 					{
 						'title': 'Test Machines',
-						'description': 'TBD'
+						'description': "Have you got computer(s) installed and setup for exploratory/acceptance test? \
+							Does it require further software beyond dev machines (e.g. a few more different browsers, a more comprehensive database)? \
+							How to backup/restore this machine if necessary?"
 					},
 					{
 						'title': 'SCM',
-						'description': 'TBD'
+						'description': "What SCM will be used? Subversion or distributed SCM such as Git or Hg? Don't use anything older than SVN. \
+							\n\nWhere will the repository be hosted? At *Thought*Works or at the client site? \
+							\n\n - If TW hosts the repository, how does the client access it? Will it impact the deployment process? \
+							  \n - If the client hosts the repository, how's the access speed? Is there any security requirement (e.g. VPN)? \
+							  \n - If the repository is hosted somewhere public, is there any security issue?"
 					},				
 					{
 						'title': 'CI',
-						'description': 'TBD'
+						'description': "What CI tool will be used? CruiseControl? Hudson? \
+							Or are you going to trial Go, even it doesn't allow you to install agents on multiple machines? \
+							\n\nWhat environments do you need to verify with CI? How many machines (physical or virtual) do you need? \
+							Have you got them all? \
+							\n\nWhere do you host CI server? It's valuable to host CI in a public accessible machine."
 					},				
 					{
 						'title': 'Mingle',
-						'description': 'TBD'
+						'description': "Have you got a Mingle instance for the project? Have you got a reasonable template installed? \
+							Is it accessible to the client? Do you need associate Mingle with the SCM repository?"
 					},				
 				]
 			}, 
@@ -235,19 +260,23 @@ function inceptionTemplate(title) {
 				'checkpoints': [
 					{
 						'title': 'PM & BA',
-						'description': 'TBD'
+						'description': "Have you got a PM and a BA? Are you happy work with them?"
 					},				
 					{
 						'title': 'Dev',
-						'description': 'TBD'
+						'description': "How many developers would you have at the beginning of the project? How many at the peak? \
+							Are they familiar with the technology stack? Are they familiar with general TW descipline? \
+							\n\nWhat are the expectations of these developers, beyond delivery? \
+							What should they learn during the project?"
 					},				
 					{
 						'title': 'QA',
-						'description': 'TBD'
+						'description': "Have you got a QA? Are you happy work with her? \
+							\n\nIs she willing to learn program (the application, or just test automation)? If so, how would you coach her?"
 					},				
 					{
 						'title': 'Other Experts',
-						'description': 'TBD'
+						'description': "Do you need any other experts for short term tasks? DBA? UI expert?"
 					}
 				]
 			}, 
@@ -256,15 +285,19 @@ function inceptionTemplate(title) {
 				'checkpoints': [
 					{
 						'title': 'Business Value',
-						'description': 'TBD'
+						'description': "Have you got a clear understanding of the client's business value? \
+							How could the application help them? How does the application become valuable?"
 					},				
 					{
 						'title': 'Stories',
-						'description': 'TBD'
+						'description': "It's supposed to be PM/BA's job. You need make sure that you have got the story list. \
+							Double check if the story list reflects the business value. \
+							Try to find out hidden stories which are important to business but not mentioned in the list."
 					},				
 					{
 						'title': 'Estimation',
-						'description': 'TBD'
+						'description': "It's your job to estimate most of the stories. Do it in a consistent manner. \
+							If you need spike to get a better estimation, you can ask your developers in office to do it."
 					},				
 				]
 			}, 
@@ -273,15 +306,17 @@ function inceptionTemplate(title) {
 				'checkpoints': [
 					{
 						'title': 'Leaders',
-						'description': 'TBD'
+						'description': "Have you met the sponsor and project manager of client side? \
+							Make sure you know them, and (more important) they know you."
 					},				
 					{
 						'title': 'OPs',
-						'description': 'TBD'
+						'description': "Who will be the people operate and maintain the application in the future? \
+							Make sure you talk with them. Ask their expectations, especially requirements on knowledge transfering."
 					},				
 					{
 						'title': 'DBA',
-						'description': 'TBD'
+						'description': "Make sure you know the DBA of client side. Involve him when you are working on 'Data' checkpoints."
 					},				
 				]
 			}, 

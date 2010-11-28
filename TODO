@@ -29,7 +29,7 @@ Sync with a knowledge base
 index.html: initialize DB if necessary									DONE
 UI tidy up																DONE			
 Test with iPad															DONE
-Create a usable Inception template										DOING
+Create a usable Inception template										DONE
 Breadcrumb: add "Home" or "Inceptions" before any
 DB migration
 Test with iPhone
