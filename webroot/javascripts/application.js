@@ -27,7 +27,7 @@ function inceptionTemplate(title) {
 					},
 					{
 						'title': 'Foundation Framework',
-						'description': "In most cases, open source foundation framework alternatives are available, \
+						'description': "In most cases, open source foundation framework candidates are available, \
 							for example, [Spring], [Spring .NET] or [Ruby on Rails]. \
 							\n\nAre you going to choose an open source foundation framework? \
 							\n\nAre you going to use a proprietary foundation framework? If so, why is that? \
