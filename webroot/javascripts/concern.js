@@ -67,3 +67,12 @@ Concern.prototype.linkToInception = function(viewHandler) {
 	
 	return breadcrumbDiv
 }
+
+Concern.prototype.toReport = function() {
+	var div = $("<div><h3>" + this.title + "</h3></div>")
+	$.each(this.checkpoints, function(index, checkpoint) {
+		div.append(checkpoint.toReport())
+	})
+	div.append("<p class='separator'>❧</p>")
+	return div
+}

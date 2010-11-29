@@ -46,13 +46,21 @@ Inception.prototype.getStatus = function() {
 	return summarizeStatus(this.concerns)
 }
 
+Inception.prototype.toReport = function() {
+	var div = $("<div class='report'><h2>" + this.title + "</h2></div>")
+	$.each(this.concerns, function(index, concern) {
+		div.append(concern.toReport())
+	})
+	return div
+}
+
 function viewInception(inceptionId) {
 	transactional(function() {
 		var loadInceptionWithinTransaction;
 	})
 }
 
-function createInception(title, status) {
+function createInception(title, status, comment) {
 	var inceptionAsJson = inceptionTemplate(title)
 	
 	var inception = new Inception(inceptionAsJson.title)
@@ -62,6 +70,9 @@ function createInception(title, status) {
 			var checkpoint = new Checkpoint(checkpointAsJson.title, checkpointAsJson.description)
 			if(status) {
 				checkpoint.status = status
+			}
+			if(comment) {
+				checkpoint.comment = comment
 			}
 			concern.checkpoints.push(checkpoint)
 		})

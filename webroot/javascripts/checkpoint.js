@@ -30,6 +30,10 @@ Checkpoint.prototype.getDescriptionHtml = function() {
 	return new Showdown.converter().makeHtml(this.description)
 }
 
+Checkpoint.prototype.getCommentHtml = function() {
+	return new Showdown.converter().makeHtml(this.comment)
+}
+
 Checkpoint.prototype.saveButton = function(image, commentTextArea, postHandler, status) {
 	var button = $("<img src='" + image + "' />")
 	var checkpoint = this
@@ -50,7 +54,6 @@ Checkpoint.prototype.saveWith = function(commentTextArea, postHandler, status) {
 	})
 	
 	transactional(function() {
-		// alert("Save succeeded!")				
 		postHandler(checkpoint)		
 	})
 }
@@ -69,4 +72,9 @@ Checkpoint.prototype.breadcrumb = function(concernViewHandler, inceptionViewHand
 	
 	breadcrumbDiv.append($("<span> > " + this.title + "</span>"))
 	return breadcrumbDiv
+}
+
+Checkpoint.prototype.toReport = function() {
+	var paragraph = $("<p><h4>" + this.title + "</h4>" + this.getCommentHtml() + "</p>")
+	return paragraph
 }

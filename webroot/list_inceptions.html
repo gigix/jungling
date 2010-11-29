@@ -63,6 +63,16 @@
 		</div>
 	</section>
 	
+	<section id='inceptionReportPane' class='pane' style='display:none;'>
+		<div class='toolbar'>
+			<nav class='title'></nav>
+			<nav class='buttons'></nav>
+		</div>
+		<div id="report">
+			
+		</div>
+	</section>
+	
 	<script>
 	function showNavigationButtons(pane, goBack) {
 		var backButton = $("<img alt='Back' src='images/round_arrow_left.png' />")
@@ -91,6 +101,20 @@
 		showList($('#inceptionsPane'), listInceptions(), showConcernsList)
 	}
 	
+	function showInceptionReport(inception) {
+		var pane = $('#inceptionReportPane')
+		showPane(pane)
+		
+		pane.find('.title').text("Inception Report : " + inception.title)
+		showNavigationButtons(pane, function() {
+			showConcernsList(inception)
+		})
+		
+		var reportContainer = pane.find('#report')
+		reportContainer.empty()
+		reportContainer.append(inception.toReport())
+	}
+	
 	function showConcernsList(inception) {
 		var pane = $('#concernsPane')
 		showList(pane, inception.concerns, showCheckpointsList)			
@@ -99,6 +123,9 @@
 		titleContainer.text(inception.title)
 		
 		var exportLink = $("<img src='images/doc_lines.png' class='export-link' />")
+		exportLink.click(function() {
+			showInceptionReport(inception)
+		})
 		titleContainer.append(exportLink)
 
 		showNavigationButtons(pane, showInceptionsList)

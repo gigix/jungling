@@ -109,3 +109,35 @@ em {
 #welcome .slogan a {
 	color: black;
 }
+
+#report {
+	padding-left: 2em;
+	font-family: 'Essays 1743',Palatino,'Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;
+}
+
+#report h2 {
+	font-size: 210%;
+	text-shadow: 0 0 5px #666677;
+	text-transform: uppercase;
+}
+
+#report h3 {
+	font-size: 150%;
+	text-transform: uppercase;
+}
+
+#report h4 {
+	margin-top: 2em;
+	padding: 0;
+}
+
+#report p {
+	margin: 0.7em;
+}
+
+#report .separator {
+	clear: both;
+	text-align: center;
+	font-size: 210%;
+	text-shadow: 0 0 5px #666677;
+}
